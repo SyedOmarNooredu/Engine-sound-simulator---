@@ -1,0 +1,361 @@
+('C:\\Users\\syedo\\Downloads\\project stuff\\project tools and random '
+ 'programs '
+ 'etc\\engine-sound-simulator-master\\engine-sound-simulator-master\\build\\main\\PKG-00.pkg',
+ {'BINARY': 1,
+  'DATA': 1,
+  'EXECUTABLE': 1,
+  'EXTENSION': 1,
+  'PYMODULE': 1,
+  'PYSOURCE': 1,
+  'PYZ': 0},
+ [('PYZ-00.pyz',
+   'C:\\Users\\syedo\\Downloads\\project stuff\\project tools and random '
+   'programs '
+   'etc\\engine-sound-simulator-master\\engine-sound-simulator-master\\build\\main\\PYZ-00.pyz',
+   'PYZ'),
+  ('struct', 'c:\\program files\\python39\\lib\\struct.pyo', 'PYMODULE'),
+  ('pyimod01_os_path',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\PyInstaller\\loader\\pyimod01_os_path.pyc',
+   'PYMODULE'),
+  ('pyimod02_archive',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\PyInstaller\\loader\\pyimod02_archive.pyc',
+   'PYMODULE'),
+  ('pyimod03_importers',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\PyInstaller\\loader\\pyimod03_importers.pyc',
+   'PYMODULE'),
+  ('pyiboot01_bootstrap',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\PyInstaller\\loader\\pyiboot01_bootstrap.py',
+   'PYSOURCE'),
+  ('pyi_rth_multiprocessing',
+   'C:\\Program '
+   'Files\\Python39\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_multiprocessing.py',
+   'PYSOURCE'),
+  ('pyi_rth_win32api',
+   'C:\\Program '
+   'Files\\Python39\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32api.py',
+   'PYSOURCE'),
+  ('pyi_rth_pkgres',
+   'C:\\Program '
+   'Files\\Python39\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_pkgres.py',
+   'PYSOURCE'),
+  ('pyi_rth_win32comgenpy',
+   'C:\\Program '
+   'Files\\Python39\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks\\pyi_rth_win32comgenpy.py',
+   'PYSOURCE'),
+  ('main',
+   'C:\\Users\\syedo\\Downloads\\project stuff\\project tools and random '
+   'programs '
+   'etc\\engine-sound-simulator-master\\engine-sound-simulator-master\\main.py',
+   'PYSOURCE'),
+  ('VCRUNTIME140.dll',
+   'c:\\program files\\python39\\VCRUNTIME140.dll',
+   'BINARY'),
+  ('api-ms-win-crt-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-locale-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-locale-l1-1-0.dll',
+   'BINARY'),
+  ('python39.dll', 'c:\\program files\\python39\\python39.dll', 'BINARY'),
+  ('api-ms-win-crt-runtime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-runtime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-math-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-math-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-stdio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-stdio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-convert-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-convert-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-string-l1-1-0.dll',
+   'BINARY'),
+  ('ucrtbase.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\ucrtbase.dll',
+   'BINARY'),
+  ('api-ms-win-crt-filesystem-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-filesystem-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-environment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-environment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-process-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-process-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-conio-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-conio-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-crt-time-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-time-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-timezone-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-timezone-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-string-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-string-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-sysinfo-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-sysinfo-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-handle-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-handle-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-errorhandling-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-errorhandling-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-1.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-1.dll',
+   'BINARY'),
+  ('api-ms-win-core-interlocked-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-interlocked-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processthreads-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processthreads-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-namedpipe-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-namedpipe-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-rtlsupport-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-synch-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-synch-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-datetime-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-datetime-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-processenvironment-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-processenvironment-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-memory-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-memory-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-heap-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-heap-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-libraryloader-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-libraryloader-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-profile-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-profile-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-console-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-console-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-debug-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-debug-l1-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-localization-l1-2-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-localization-l1-2-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-file-l2-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-file-l2-1-0.dll',
+   'BINARY'),
+  ('api-ms-win-core-util-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-core-util-l1-1-0.dll',
+   'BINARY'),
+  ('pywintypes39.dll',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\pywin32_system32\\pywintypes39.dll',
+   'BINARY'),
+  ('pythoncom39.dll',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\pywin32_system32\\pythoncom39.dll',
+   'BINARY'),
+  ('win32trace',
+   'c:\\program files\\python39\\lib\\site-packages\\win32\\win32trace.pyd',
+   'EXTENSION'),
+  ('win32ui',
+   'c:\\program files\\python39\\lib\\site-packages\\Pythonwin\\win32ui.pyd',
+   'EXTENSION'),
+  ('unicodedata',
+   'c:\\program files\\python39\\DLLs\\unicodedata.pyd',
+   'EXTENSION'),
+  ('select', 'c:\\program files\\python39\\DLLs\\select.pyd', 'EXTENSION'),
+  ('_socket', 'c:\\program files\\python39\\DLLs\\_socket.pyd', 'EXTENSION'),
+  ('_decimal', 'c:\\program files\\python39\\DLLs\\_decimal.pyd', 'EXTENSION'),
+  ('_hashlib', 'c:\\program files\\python39\\DLLs\\_hashlib.pyd', 'EXTENSION'),
+  ('_lzma', 'c:\\program files\\python39\\DLLs\\_lzma.pyd', 'EXTENSION'),
+  ('_bz2', 'c:\\program files\\python39\\DLLs\\_bz2.pyd', 'EXTENSION'),
+  ('_overlapped',
+   'c:\\program files\\python39\\DLLs\\_overlapped.pyd',
+   'EXTENSION'),
+  ('_ssl', 'c:\\program files\\python39\\DLLs\\_ssl.pyd', 'EXTENSION'),
+  ('_asyncio', 'c:\\program files\\python39\\DLLs\\_asyncio.pyd', 'EXTENSION'),
+  ('_queue', 'c:\\program files\\python39\\DLLs\\_queue.pyd', 'EXTENSION'),
+  ('_ctypes', 'c:\\program files\\python39\\DLLs\\_ctypes.pyd', 'EXTENSION'),
+  ('_multiprocessing',
+   'c:\\program files\\python39\\DLLs\\_multiprocessing.pyd',
+   'EXTENSION'),
+  ('pyexpat', 'c:\\program files\\python39\\DLLs\\pyexpat.pyd', 'EXTENSION'),
+  ('win32evtlog',
+   'c:\\program files\\python39\\lib\\site-packages\\win32\\win32evtlog.pyd',
+   'EXTENSION'),
+  ('_win32sysloader',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\win32\\_win32sysloader.pyd',
+   'EXTENSION'),
+  ('win32api',
+   'c:\\program files\\python39\\lib\\site-packages\\win32\\win32api.pyd',
+   'EXTENSION'),
+  ('_uuid', 'c:\\program files\\python39\\DLLs\\_uuid.pyd', 'EXTENSION'),
+  ('win32com.shell.shell',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\win32comext\\shell\\shell.pyd',
+   'EXTENSION'),
+  ('_portaudio',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\_portaudio.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.core._multiarray_tests',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\core\\_multiarray_tests.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.core._multiarray_umath',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\core\\_multiarray_umath.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('win32pdh',
+   'c:\\program files\\python39\\lib\\site-packages\\win32\\win32pdh.pyd',
+   'EXTENSION'),
+  ('numpy.random.sfc64',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\sfc64.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.philox',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\philox.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.pcg64',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\pcg64.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.mt19937',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\mt19937.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.bit_generator',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\bit_generator.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.generator',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\generator.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.mtrand',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\mtrand.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.entropy',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\entropy.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.bounded_integers',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\bounded_integers.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.random.common',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\random\\common.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.fft.pocketfft_internal',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\fft\\pocketfft_internal.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.linalg._umath_linalg',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\linalg\\_umath_linalg.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('numpy.linalg.lapack_lite',
+   'c:\\program '
+   'files\\python39\\lib\\site-packages\\numpy\\linalg\\lapack_lite.cp39-win_amd64.pyd',
+   'EXTENSION'),
+  ('api-ms-win-crt-utility-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-utility-l1-1-0.dll',
+   'BINARY'),
+  ('mfc140u.dll',
+   'c:\\program files\\python39\\lib\\site-packages\\Pythonwin\\mfc140u.dll',
+   'BINARY'),
+  ('libcrypto-1_1.dll',
+   'c:\\program files\\python39\\DLLs\\libcrypto-1_1.dll',
+   'BINARY'),
+  ('libssl-1_1.dll',
+   'c:\\program files\\python39\\DLLs\\libssl-1_1.dll',
+   'BINARY'),
+  ('libffi-7.dll', 'c:\\program files\\python39\\DLLs\\libffi-7.dll', 'BINARY'),
+  ('api-ms-win-crt-multibyte-l1-1-0.dll',
+   'C:\\Program Files (x86)\\Windows Kits\\10\\Windows Performance '
+   'Toolkit\\api-ms-win-crt-multibyte-l1-1-0.dll',
+   'BINARY'),
+  ('base_library.zip',
+   'C:\\Users\\syedo\\Downloads\\project stuff\\project tools and random '
+   'programs '
+   'etc\\engine-sound-simulator-master\\engine-sound-simulator-master\\build\\main\\base_library.zip',
+   'DATA'),
+  ('Include\\pyconfig.h',
+   'c:\\program files\\python39\\Include\\pyconfig.h',
+   'DATA'),
+  ('main.exe.manifest',
+   'C:\\Users\\syedo\\Downloads\\project stuff\\project tools and random '
+   'programs '
+   'etc\\engine-sound-simulator-master\\engine-sound-simulator-master\\build\\main\\main.exe.manifest',
+   'BINARY'),
+  ('pyi-windows-manifest-filename main.exe.manifest', '', 'OPTION')],
+ False,
+ False,
+ False,
+ [])
