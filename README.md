@@ -1,6 +1,6 @@
 # Engine Sound Simulator+++
 
-Indirect fork of https://github.com/jgardner8/engine-sound-simulator
+Indirect fork of [engine sound simulator by jgardner8](https://github.com/jgardner8/engine-sound-simulator "Original repository")
 
 ## Changes:
 * Throttle key activation now works (using pynput)
