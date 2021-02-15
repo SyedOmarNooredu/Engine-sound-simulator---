@@ -12,5 +12,5 @@ Indirect fork of [engine sound simulator by jgardner8](https://github.com/jgardn
 pip install -r requirements.txt --user
 python main.py
 ```
-##Troubleshooting
+## Troubleshooting
 If there is a problem with installing pyaudio, consult [this StackOverflow answer](https://stackoverflow.com/a/55630212/13015676)
