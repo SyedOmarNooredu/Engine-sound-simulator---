@@ -16,7 +16,7 @@ def _convert_timing_format(timing):
         timing[i] += timing[i-1]
 
 class Engine:
-    def __init__(self, idle_rpm, limiter_rpm, strokes, cylinders, timing, fire_snd, between_fire_snd, unequal=[]):
+    def __init__(self, idle_rpm, limiter_rpm, strokes, cylinders, timing, fire_snd, between_fire_snd):
         '''
         Note: all sounds used will be concatenated to suit engine run speed.
         Make sure there's excess audio data available in the buffer.
@@ -57,11 +57,6 @@ class Engine:
             'Ensure all audio buffers contain at least 1 second of data, see docstring'
         self.fire_snd = fire_snd
         self.between_fire_snd = between_fire_snd
-        
-        #added by omar
-        if not unequal:
-            unequal = [0]*cylinders
-        self.unequal = unequal
 
     def _gen_audio_one_engine_cycle(self):
         # Calculate durations of fire and between fire events
@@ -75,11 +70,9 @@ class Engine:
         bufs = []
         fire_snd = audio_tools.slice(self.fire_snd, fire_duration)
         for cylinder in range(0, self.cylinders):
-            unequalms = self.unequal[cylinder]/1000 if self.unequal[cylinder] > 0 else self.unequal[cylinder]
-            #unequalms = min(unequalms, (self.timing[cylinder] / 180) * 2 / strokes_per_sec)
-            before_fire_duration = (self.timing[cylinder] / 180) / strokes_per_sec + unequalms # 180 degrees crankshaft rotation per stroke
+            before_fire_duration = (self.timing[cylinder] / 180) / strokes_per_sec # 180 degrees crankshaft rotation per stroke
             before_fire_snd = audio_tools.slice(self.between_fire_snd, before_fire_duration)
-            after_fire_duration = between_fire_duration - before_fire_duration - unequalms
+            after_fire_duration = between_fire_duration - before_fire_duration
             after_fire_snd = audio_tools.slice(self.between_fire_snd, after_fire_duration)
             bufs.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
 
@@ -112,7 +105,7 @@ class Engine:
             f'${len(self._audio_buffer)} buffered samples and ${num_new_samples} new samples')
         self._audio_buffer = engine_snd[num_new_samples:]
         return buf
-    
+
     def throttle(self, fraction):
         '''Applies throttle, increasing or decreasing the engine's RPM based on friction, power etc'''
         if fraction == 1.0:

@@ -226,18 +226,19 @@ def inline_4_uneven_firing():
         between_fire_snd=synth.silence(1)
     )
 
-def boxer_4_crossplane_custom(rando):
+def boxer_4_crossplane_custom(rando=[0]*4):
     whynot=4
-    because=90
+    because=180
     #because=rando
     return Engine(
         idle_rpm=800,
-        limiter_rpm=9000,
+        limiter_rpm=7800,
         strokes=4,
         cylinders=whynot,
         timing=[because, 360-because]*2,
         fire_snd=_fire_snd,
-        between_fire_snd=synth.silence(1)
+        between_fire_snd=synth.silence(1),
+        unequal=rando
     )
 
 def boxer_4_half():
