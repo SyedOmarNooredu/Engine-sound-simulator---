@@ -232,7 +232,7 @@ def boxer_4_crossplane_custom(rando=[0]*4):
     #because=rando
     return Engine(
         idle_rpm=800,
-        limiter_rpm=7800,
+        limiter_rpm=6700,
         strokes=4,
         cylinders=whynot,
         timing=[because, 360-because]*2,
