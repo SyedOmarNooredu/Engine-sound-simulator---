@@ -7,6 +7,7 @@ Indirect fork of [engine sound simulator by jgardner8](https://github.com/jgardn
 * More engines in engine_factory.py
 * random and sawtooth waves in synth.py
 * "Subie rumble" (a.k.a unequal exhaust sound) (WIP)
+* Rotary (sort of, set strokes to 3)
 ## Requirements
 * Functioning audio playback devices
 * Python

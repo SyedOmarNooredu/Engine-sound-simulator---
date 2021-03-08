@@ -23,7 +23,7 @@ class Engine:
 
         idle_rpm: engine speed at idle
         limiter_rpm: engine speed at rev limiter
-        strokes: number of strokes in full engine cycle, must be 2 or 4
+        strokes: number of strokes in full engine cycle, must be 2 or 4 (new: 3 for rotary)
         cylinders: number of cylinders in engine
         timing: array where each element is the number of crankshaft degrees that cylinder should wait
           to fire after the previous cylinder fires. See engine_factory.py for examples
@@ -39,7 +39,7 @@ class Engine:
         self.idle_rpm = idle_rpm
         self.limiter_rpm = limiter_rpm
 
-        assert strokes in (2, 4), 'strokes not in (2, 4), see docstring'
+        assert strokes in (2, 3, 4), 'strokes not in (2, 3, 4), see docstring'
         self.strokes = strokes
 
         assert cylinders > 0, 'cylinders <= 0'
@@ -63,6 +63,8 @@ class Engine:
             unequal = [0]*cylinders
         self.unequal = unequal
 
+        self.unequalmore = []
+
     def _gen_audio_one_engine_cycle(self):
         # Calculate durations of fire and between fire events
         strokes_per_min = self._rpm * 2 # revolution of crankshaft is 2 strokes
@@ -73,22 +75,51 @@ class Engine:
 
         # Generate audio buffers for all of the cylinders individually
         bufs = []
+        bufsunequal = []
         fire_snd = audio_tools.slice(self.fire_snd, fire_duration)
         for cylinder in range(0, self.cylinders):
             unequalms = self.unequal[cylinder]/1000 if self.unequal[cylinder] > 0 else self.unequal[cylinder]
             #unequalms = min(unequalms, (self.timing[cylinder] / 180) * 2 / strokes_per_sec)
-            before_fire_duration = (self.timing[cylinder] / 180) / strokes_per_sec + unequalms # 180 degrees crankshaft rotation per stroke
-            before_fire_snd = audio_tools.slice(self.between_fire_snd, before_fire_duration)
-            after_fire_duration = between_fire_duration - before_fire_duration - unequalms
+            before_fire_duration = (self.timing[cylinder] / 180) / strokes_per_sec# + unequalms # 180 degrees crankshaft rotation per stroke
+            before_fire_snd = audio_tools.slice(self.between_fire_snd, before_fire_duration+unequalms)
+            after_fire_duration = between_fire_duration - before_fire_duration # - unequalms
             after_fire_snd = audio_tools.slice(self.between_fire_snd, after_fire_duration)
-            bufs.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
+            #print(len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])))
+            if len(self.unequalmore) > 0:
+                bufsunequal.append(np.array(self.unequalmore))
+            if unequalms > 0:
+                #print("unequal")
+                bufs.append(np.array([0]*len(audio_tools.concat([audio_tools.slice(self.between_fire_snd, before_fire_duration), fire_snd, after_fire_snd]))))
+                bufsunequal.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
+            else:
+                #if unequaldelay > len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])):
+                #    unequaldelay -= len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
+                #else:
+                #    bufsunequal.append(np.array([0]*(len(audio_tools.slice(self.between_fire_snd, unequaldelay)) - len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])))))
+                bufsunequal.append(np.array([0]*len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))))
+                bufs.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
 
+        # combine both lists
+        #print(bufs)
+        #print("nextone")
+        #print(bufsunequal)
+        #bufs = list(np.maximum(bufs, bufsunequal))
         # Make sure all buffers are the same length (may be off by 1 because of rounding issues)
+        
         max_buf_len = len(max(bufs, key=len))
         bufs = [audio_tools.pad_with_zeros(buf, max_buf_len-len(buf)) for buf in bufs]
 
+        max_buf_len_unequal = len(max(bufsunequal, key=len))
+        #print(max_buf_len)
+        bufsunequal = [audio_tools.pad_with_zeros(buf, max_buf_len_unequal-len(buf)) for buf in bufsunequal]
+
         # Combine all the cylinder sounds
         engine_snd = audio_tools.overlay(bufs)
+        engine_snd_unequal = audio_tools.overlay(bufsunequal)
+        print(len(engine_snd), len(engine_snd_unequal))
+        engine_snd = np.maximum(engine_snd, engine_snd_unequal[:len(engine_snd)])
+        if len(engine_snd_unequal) > len(engine_snd):
+            self.unequalmore = engine_snd_unequal[len(engine_snd):]
         return audio_tools.in_playback_format(engine_snd)
 
     def gen_audio(self, num_samples):

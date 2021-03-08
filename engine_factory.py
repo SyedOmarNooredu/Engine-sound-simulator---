@@ -282,3 +282,14 @@ def v_four_90_deg():
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
     )
+
+def fake_rotary_2rotor():
+    return Engine(
+        idle_rpm=800,
+        limiter_rpm=8300,
+        strokes=3,
+        cylinders=2,
+        timing=[720/3]*2,
+        fire_snd=_fire_snd,
+        between_fire_snd=synth.silence(1)
+    )

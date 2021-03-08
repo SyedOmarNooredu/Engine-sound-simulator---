@@ -10,6 +10,7 @@ import random
 engine = engine_factory.boxer_4_crossplane_custom([2, 2, 0, 0])#(rando := random.randrange(360)))
 #engine = engine_factory.boxer_4_half()
 #engine = engine_factory.random()
+#engine = engine_factory.fake_rotary_2rotor()
 
 audio_device = AudioDevice()
 stream = audio_device.play_stream(engine.gen_audio)

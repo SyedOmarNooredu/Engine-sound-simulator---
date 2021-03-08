@@ -12,6 +12,7 @@ def overlay(bufs):
 
     bufs = [np.copy(buf) for buf in bufs]
     for buf in bufs:
+        #print(buf)
         buf / len(bufs)
 
     out_buf = np.sum(bufs, axis=0)
