@@ -1,3 +1,10 @@
 env
 __pycache__
 todo.txt
+.idea/engine-sound-simulator-master.iml
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/inspectionProfiles/Project_Default.xml
+.idea/misc.xml
+.idea/workspace.xml
+.idea/modules.xml
+.idea/vcs.xml
