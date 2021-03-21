@@ -236,6 +236,7 @@ def boxer_4_crossplane_custom(rando=[0]*4):
         strokes=4,
         cylinders=whynot,
         timing=[because, 360-because]*2,
+        #timing = [180, 270, 180, 90],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1),
         unequal=rando
@@ -284,12 +285,14 @@ def v_four_90_deg():
     )
 
 def fake_rotary_2rotor():
+    difference = 60*(4*3)
     return Engine(
-        idle_rpm=800,
+        idle_rpm=100,
         limiter_rpm=8300,
-        strokes=3,
+        strokes=1/3,
         cylinders=2,
-        timing=[720/3]*2,
+        #timing=[720/8]*2,
+        timing = [difference, 720-difference],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
     )

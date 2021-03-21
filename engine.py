@@ -39,7 +39,7 @@ class Engine:
         self.idle_rpm = idle_rpm
         self.limiter_rpm = limiter_rpm
 
-        assert strokes in (2, 3, 4), 'strokes not in (2, 3, 4), see docstring'
+        #assert strokes in (2, 3, 4), 'strokes not in (2, 3, 4), see docstring'
         self.strokes = strokes
 
         assert cylinders > 0, 'cylinders <= 0'
@@ -64,6 +64,7 @@ class Engine:
         self.unequal = unequal
 
         self.unequalmore = []
+        self.previousms = 0
 
     def _gen_audio_one_engine_cycle(self):
         # Calculate durations of fire and between fire events
@@ -89,8 +90,26 @@ class Engine:
                 bufsunequal.append(np.array(self.unequalmore))
             if unequalms > 0:
                 #print("unequal")
-                bufs.append(np.array([0]*len(audio_tools.concat([audio_tools.slice(self.between_fire_snd, before_fire_duration), fire_snd, after_fire_snd]))))
+                bufs.append(
+                    np.array(
+                        [0]*len(
+                            audio_tools.concat(
+                                [
+                                    audio_tools.slice(
+                                        self.between_fire_snd,
+                                        before_fire_duration
+                                    ),
+                                    fire_snd,
+                                    after_fire_snd
+                                ]
+                            )
+                        )
+                    )
+                )
+                #if self.previousms != unequalms:
+                    #before_fire_snd = audio_tools.slice(self.between_fire_snd, before_fire_duration+unequalms-self.previousms)
                 bufsunequal.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
+                self.previousms = unequalms
             else:
                 #if unequaldelay > len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])):
                 #    unequaldelay -= len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
@@ -116,8 +135,9 @@ class Engine:
         # Combine all the cylinder sounds
         engine_snd = audio_tools.overlay(bufs)
         engine_snd_unequal = audio_tools.overlay(bufsunequal)
-        print(len(engine_snd), len(engine_snd_unequal))
-        engine_snd = np.maximum(engine_snd, engine_snd_unequal[:len(engine_snd)])
+        #print(len(engine_snd), len(engine_snd_unequal))
+        if sum(audio_tools.overlay(bufsunequal)) > 0:
+            engine_snd = np.maximum(engine_snd, engine_snd_unequal[:len(engine_snd)])
         if len(engine_snd_unequal) > len(engine_snd):
             self.unequalmore = engine_snd_unequal[len(engine_snd):]
         return audio_tools.in_playback_format(engine_snd)
@@ -149,7 +169,7 @@ class Engine:
         if fraction == 1.0:
             if self._rpm < self.limiter_rpm:
                 #self._rpm += (1000 / self.strokes)
-                self._rpm += (100 / self.strokes)
+                self._rpm += (100 / 4)#self.strokes)
             else:
                 fraction = 0.0 # cut spark
 
