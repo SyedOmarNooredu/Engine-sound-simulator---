@@ -231,7 +231,7 @@ def boxer_4_crossplane_custom(rando=[0]*4):
     because=180
     #because=rando
     return Engine(
-        idle_rpm=800,
+        idle_rpm=750,
         limiter_rpm=6700,
         strokes=4,
         cylinders=whynot,
@@ -246,10 +246,10 @@ def boxer_4_half():
     whynot=2
     return Engine(
         idle_rpm=800,
-        limiter_rpm=7000,
+        limiter_rpm=6700,
         strokes=4,
         cylinders=whynot,
-        timing=[360]*2,
+        timing=[180, 180],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
     )
@@ -293,6 +293,17 @@ def fake_rotary_2rotor():
         cylinders=2,
         #timing=[720/8]*2,
         timing = [difference, 720-difference],
+        fire_snd=_fire_snd,
+        between_fire_snd=synth.silence(1)
+    )
+
+def inline_4_1_spark_plug_disconnected():
+    return Engine(
+        idle_rpm=800,
+        limiter_rpm=7800,
+        strokes=4,
+        cylinders=3,
+        timing=[180, 360, 180],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
     )

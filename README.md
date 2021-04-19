@@ -22,8 +22,8 @@ Double-click 'main.py' or enter
 ```
 python main.py
 ```
-into Command Prompt/a terminal to run the script.
+into Command Prompt or another terminal to run the script.
 ## Troubleshooting
-If there is a problem with installing pyaudio, consult [this StackOverflow answer](https://stackoverflow.com/a/55630212/13015676)
+If there is a problem with installing pyaudio, consult [this StackOverflow answer](https://stackoverflow.com/a/55630212/13015676 "link to StackOverflow")
 ## Credit
 [jgardner](https://github.com/jgardner8 "Original Creator") made the original and therefore most of this repository. Thanks man.

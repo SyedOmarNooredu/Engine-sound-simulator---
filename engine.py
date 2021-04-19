@@ -137,7 +137,10 @@ class Engine:
         engine_snd_unequal = audio_tools.overlay(bufsunequal)
         #print(len(engine_snd), len(engine_snd_unequal))
         if sum(audio_tools.overlay(bufsunequal)) > 0:
-            engine_snd = np.maximum(engine_snd, engine_snd_unequal[:len(engine_snd)])
+            if cfg.sound_merge_method == "average":
+                engine_snd = np.mean([engine_snd, engine_snd_unequal[:len(engine_snd)]], axis=0)
+            elif cfg.sound_merge_method == "max":
+                engine_snd = np.maximum(engine_snd, engine_snd_unequal[:len(engine_snd)])
         if len(engine_snd_unequal) > len(engine_snd):
             self.unequalmore = engine_snd_unequal[len(engine_snd):]
         return audio_tools.in_playback_format(engine_snd)
@@ -159,8 +162,8 @@ class Engine:
         # Leftover new samples become the audio buffer for the next run
         num_new_samples = num_samples - len(self._audio_buffer)
         buf = audio_tools.concat([self._audio_buffer, engine_snd[:num_new_samples]])
-        assert len(buf) == num_samples, (f'${num_samples} requested, but ${len(buf)} samples provided, from ' +
-            f'${len(self._audio_buffer)} buffered samples and ${num_new_samples} new samples')
+        #assert len(buf) == num_samples, (f'${num_samples} requested, but ${len(buf)} samples provided, from ' +
+            #f'${len(self._audio_buffer)} buffered samples and ${num_new_samples} new samples')
         self._audio_buffer = engine_snd[num_new_samples:]
         return buf
     
