@@ -226,7 +226,7 @@ def inline_4_uneven_firing():
         between_fire_snd=synth.silence(1)
     )
 
-def boxer_4_crossplane_custom(rando=[0]*4):
+def boxer_4_crossplane_custom(rando=[0]*4):  #wrx
     whynot=4
     because=180
     #because=rando
@@ -249,7 +249,7 @@ def boxer_4_half():
         limiter_rpm=6700,
         strokes=4,
         cylinders=whynot,
-        timing=[180, 180],
+        timing=[180, 720-180],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
     )
@@ -285,13 +285,13 @@ def v_four_90_deg():
     )
 
 def fake_rotary_2rotor():
-    difference = 60*(4*3)
+    difference = 60
     return Engine(
-        idle_rpm=100,
+        idle_rpm=800,
         limiter_rpm=8300,
-        strokes=1/3,
+        strokes=2,
         cylinders=2,
-        #timing=[720/8]*2,
+        #timing=[90, 720-90],
         timing = [difference, 720-difference],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
@@ -306,4 +306,16 @@ def inline_4_1_spark_plug_disconnected():
         timing=[180, 360, 180],
         fire_snd=_fire_snd,
         between_fire_snd=synth.silence(1)
+    )
+
+def V_12(rando=[0]*12):
+    return Engine(
+        idle_rpm=800,
+        limiter_rpm=9000,
+        strokes=4,
+        cylinders=12,
+        timing=[60]*12,
+        fire_snd=_fire_snd,
+        between_fire_snd=synth.silence(1),
+        unequal=rando
     )

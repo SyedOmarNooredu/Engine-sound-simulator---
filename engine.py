@@ -39,7 +39,7 @@ class Engine:
         self.idle_rpm = idle_rpm
         self.limiter_rpm = limiter_rpm
 
-        #assert strokes in (2, 3, 4), 'strokes not in (2, 3, 4), see docstring'
+        #assert strokes in (2, 4), 'strokes not in (2, 4), see docstring'
         self.strokes = strokes
 
         assert cylinders > 0, 'cylinders <= 0'
@@ -79,69 +79,110 @@ class Engine:
         bufsunequal = []
         fire_snd = audio_tools.slice(self.fire_snd, fire_duration)
         for cylinder in range(0, self.cylinders):
-            unequalms = self.unequal[cylinder]/1000 if self.unequal[cylinder] > 0 else self.unequal[cylinder]
+            unequalms = (
+                self.unequal[cylinder]/1000  # unequal converted from milliseconds to seconds
+                if self.unequal[cylinder] > 0  # if unequal set
+                #else self.unequal[cylinder]  # else 0
+                else 0
+            )
             #unequalms = min(unequalms, (self.timing[cylinder] / 180) * 2 / strokes_per_sec)
             before_fire_duration = (self.timing[cylinder] / 180) / strokes_per_sec# + unequalms # 180 degrees crankshaft rotation per stroke
             before_fire_snd = audio_tools.slice(self.between_fire_snd, before_fire_duration+unequalms)
             after_fire_duration = between_fire_duration - before_fire_duration # - unequalms
             after_fire_snd = audio_tools.slice(self.between_fire_snd, after_fire_duration)
             #print(len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])))
-            if len(self.unequalmore) > 0:
+            if len(self.unequalmore):
                 bufsunequal.append(np.array(self.unequalmore))
-            if unequalms > 0:
+            if unequalms:  # if unequal parameter set for cylinder
                 #print("unequal")
-                bufs.append(
-                    np.array(
-                        [0]*len(
+                bufs.append(  # add to buffer
+                    np.array(  # make array
+                        [0]*len(  # a tring of 0s the length of
                             audio_tools.concat(
                                 [
                                     audio_tools.slice(
                                         self.between_fire_snd,
                                         before_fire_duration
-                                    ),
+                                    ),  # silence as long as before_fire_duration (in seconds)
                                     fire_snd,
                                     after_fire_snd
-                                ]
+                                ]  # complete combustion sound including before and after
                             )
                         )
                     )
                 )
-                #if self.previousms != unequalms:
-                    #before_fire_snd = audio_tools.slice(self.between_fire_snd, before_fire_duration+unequalms-self.previousms)
-                bufsunequal.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
-                self.previousms = unequalms
+                #if self.previousms != unequalms:  # unequal ms different from previous cylinder
+                before_fire_snd = audio_tools.slice(
+                    self.between_fire_snd, # silence
+                    before_fire_duration + unequalms# - self.previousms  # current duration plus difference between unequals
+                )  # make interval before sound smaller
+                bufsunequal.append(
+                    audio_tools.concat(
+                        [before_fire_snd, fire_snd, after_fire_snd]  # combustion + silence
+                    )
+                )  # add generated combustion to unequal buffer
+                self.previousms = unequalms  # make current unequalms the new previousms
             else:
-                #if unequaldelay > len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])):
-                #    unequaldelay -= len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
-                #else:
-                #    bufsunequal.append(np.array([0]*(len(audio_tools.slice(self.between_fire_snd, unequaldelay)) - len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])))))
-                bufsunequal.append(np.array([0]*len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))))
-                bufs.append(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
+                #forgot what this was for, probly before separate buffers
+                """if self.unequaldelay > len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])):
+
+                    self.unequaldelay -= len(audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd]))
+                else:
+                    bufsunequal.append(
+                        np.array(  # make numpy array of
+                            [0]*(  # a list of 0s with the amount of 0s equal to
+                                len(  # the length of
+                                    audio_tools.slice(self.between_fire_snd, self.unequaldelay)  # silence as long as unequal offset
+                                ) 
+                                - 
+                                len(
+                                    audio_tools.concat([before_fire_snd, fire_snd, after_fire_snd])
+                                )
+                            )
+                        )
+                    )"""
+                bufsunequal.append(
+                    np.array(
+                        [0]*len(
+                            audio_tools.concat(
+                                [before_fire_snd, fire_snd, after_fire_snd]  # combustion + silence
+                            )
+                        )
+                    )
+                )  # add silence to unequal buffer
+                bufs.append(
+                    audio_tools.concat(
+                        [before_fire_snd, fire_snd, after_fire_snd]  # combustion + silence
+                    )
+                )  # add combustion package to equal buffer
 
         # combine both lists
-        #print(bufs)
+        #print(len(bufs))
         #print("nextone")
-        #print(bufsunequal)
+        #print(len(bufsunequal))
         #bufs = list(np.maximum(bufs, bufsunequal))
         # Make sure all buffers are the same length (may be off by 1 because of rounding issues)
         
         max_buf_len = len(max(bufs, key=len))
         bufs = [audio_tools.pad_with_zeros(buf, max_buf_len-len(buf)) for buf in bufs]
+        
+        # same thing as before but with unequal buffer
 
         max_buf_len_unequal = len(max(bufsunequal, key=len))
         #print(max_buf_len)
+        #might not be good idea with unequal, since that's how the unequalness is made
         bufsunequal = [audio_tools.pad_with_zeros(buf, max_buf_len_unequal-len(buf)) for buf in bufsunequal]
 
         # Combine all the cylinder sounds
-        engine_snd = audio_tools.overlay(bufs)
-        engine_snd_unequal = audio_tools.overlay(bufsunequal)
+        engine_snd = audio_tools.overlay(bufs)  # not sure
+        engine_snd_unequal = audio_tools.overlay(bufsunequal)  # not sure
         #print(len(engine_snd), len(engine_snd_unequal))
-        if sum(audio_tools.overlay(bufsunequal)) > 0:
-            if cfg.sound_merge_method == "average":
+        if sum(engine_snd_unequal) > 0:  # if unequal buffer contains anything
+            if cfg.sound_merge_method == "average":  # average of both buffers
                 engine_snd = np.mean([engine_snd, engine_snd_unequal[:len(engine_snd)]], axis=0)
-            elif cfg.sound_merge_method == "max":
+            elif cfg.sound_merge_method == "max":  # maximum values of both buffers
                 engine_snd = np.maximum(engine_snd, engine_snd_unequal[:len(engine_snd)])
-        if len(engine_snd_unequal) > len(engine_snd):
+        if len(engine_snd_unequal) > len(engine_snd):  # if unequal buffer is longer than 
             self.unequalmore = engine_snd_unequal[len(engine_snd):]
         return audio_tools.in_playback_format(engine_snd)
 
@@ -174,7 +215,8 @@ class Engine:
                 #self._rpm += (1000 / self.strokes)
                 self._rpm += (100 / 4)#self.strokes)
             else:
-                fraction = 0.0 # cut spark
+                #fraction = 0.0 # cut spark
+                self.rpm -= 
 
         if fraction == 0.0:
             if self._rpm > self.idle_rpm:
@@ -183,5 +225,7 @@ class Engine:
 
         #print("\033[A                             \033[A") # clear previous line in console
         print('RPM', self._rpm, end="\r")
-    def specific_rpm(self):
+
+    def specific_rpm(self):  # TODO
+        '''set to specific RPM, for stuff like RPM sliders or drone'''
         pass
