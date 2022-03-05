@@ -8,7 +8,7 @@ import random
 # engine = engine_factory.v_8_LS()
 # engine = engine_factory.inline_5_crossplane()
 # engine = engine_factory.inline_6()
-engine = engine_factory.boxer_4_crossplane_custom([100, 100, 0, 0])  # (rando := random.randrange(360)))
+engine = engine_factory.boxer_4_crossplane_custom([1, 1, 0, 0])  # (rando := random.randrange(360)))
 # engine = engine_factory.inline_4_1_spark_plug_disconnected()
 # engine = engine_factory.inline_4()
 # engine = engine_factory.boxer_4_half()

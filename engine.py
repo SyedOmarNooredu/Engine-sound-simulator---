@@ -215,8 +215,7 @@ class Engine:
                 #self._rpm += (1000 / self.strokes)
                 self._rpm += (100 / 4)#self.strokes)
             else:
-                #fraction = 0.0 # cut spark
-                self.rpm -= 
+                fraction = 0.0 # cut spark
 
         if fraction == 0.0:
             if self._rpm > self.idle_rpm:
@@ -227,5 +226,5 @@ class Engine:
         print('RPM', self._rpm, end="\r")
 
     def specific_rpm(self):  # TODO
-        '''set to specific RPM, for stuff like RPM sliders or drone'''
+        '''set to specific RPM, for stuff like RPM sliders or drone simulation'''
         pass
